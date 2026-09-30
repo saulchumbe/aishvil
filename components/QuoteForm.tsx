@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 
@@ -17,7 +17,7 @@ export default function QuoteForm() {
   const [enviado, setEnviado] = useState(false);
   const [servicioSeleccionado, setServicioSeleccionado] = useState(SERVICIOS[0]);
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);

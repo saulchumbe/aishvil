@@ -1,4 +1,4 @@
-﻿import { notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import { servicios } from "@/lib/data/servicios";
 import { proyectos } from "@/lib/data/proyectos";
@@ -9,7 +9,7 @@ export function generateStaticParams() {
   return servicios.map((s) => ({ slug: s.slug }));
 }
 
-export default async function ServicioPage({ params }) {
+export default async function ServicioPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const servicio = servicios.find((s) => s.slug === slug);
   if (!servicio) return notFound();
