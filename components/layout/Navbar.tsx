@@ -42,51 +42,51 @@ export default function Navbar() {
         </div>
       </header>
 
-      {open && (
-        <div
-          style={{
-            position: "fixed",
-            top: 57,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            zIndex: 50,
-            backgroundColor: "#131313",
-          }}
-          className="flex flex-col px-6 py-8"
-        >
-          <nav className="flex flex-col">
-            {LINKS.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="border-cement-800 text-offwhite font-display border-b py-5 text-xl uppercase tracking-wide"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-          <div className="mt-auto flex flex-col gap-3 pt-8">
+      <div
+        onClick={() => setOpen(false)}
+        className={
+          "fixed left-0 right-0 top-[57px] bottom-0 z-40 bg-black/60 transition-opacity duration-300 " +
+          (open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none")
+        }
+      />
+
+      <div
+        className={
+          "fixed left-0 right-0 top-[57px] z-50 origin-top overflow-hidden bg-[#131313] border-b border-cement-800 shadow-2xl transition-all duration-300 ease-out px-6 " +
+          (open ? "max-h-[520px] opacity-100 py-5" : "max-h-0 opacity-0 py-0 pointer-events-none")
+        }
+      >
+        <div className="flex flex-col">
+          {LINKS.map((l) => (
             <Link
-              href="/cotizar"
+              key={l.href}
+              href={l.href}
               onClick={() => setOpen(false)}
-              className="btn-pop bg-amber text-graphite-950 rounded-sm py-4 text-center font-mono text-sm font-bold tracking-widest uppercase"
+              className="border-cement-800 text-offwhite font-display border-b py-3.5 text-base uppercase tracking-wide"
             >
-              Solicitar cotizacion
+              {l.label}
             </Link>
-            <a
-              href={"https://wa.me/" + WHATSAPP_NUMERO}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-cement-800 text-offwhite flex items-center justify-center gap-2 rounded-sm border py-4 font-mono text-sm tracking-widest uppercase"
-            >
-              <MessageCircle size={18} />
-              <span>Escribir por WhatsApp</span>
-            </a>
-          </div>
+          ))}
         </div>
-      )}
+        <div className="mt-5 flex flex-col gap-3">
+          <Link
+            href="/cotizar"
+            onClick={() => setOpen(false)}
+            className="btn-pop bg-amber text-graphite-950 rounded-sm py-3 text-center font-mono text-xs font-bold tracking-widest uppercase"
+          >
+            Solicitar cotizacion
+          </Link>
+          <a
+            href={"https://wa.me/" + WHATSAPP_NUMERO}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-steel-300 flex items-center justify-center gap-2 py-1 font-mono text-xs tracking-widest uppercase"
+          >
+            <MessageCircle size={16} />
+            <span>Escribir por WhatsApp</span>
+          </a>
+        </div>
+      </div>
     </>
   );
 }
