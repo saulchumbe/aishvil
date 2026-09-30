@@ -1,0 +1,57 @@
+import type { Proyecto } from "@/lib/types";
+
+export const proyectos: Proyecto[] = [
+  {
+    slug: "planta-industrial-zona-norte",
+    titulo: "Planta industrial - Zona Norte",
+    servicioSlug: "pulido-de-pisos-endurecidos",
+    ubicacion: "Santa Cruz de la Sierra",
+    areaM2: 1200,
+    descripcion: "Pulido de piso industrial existente para una planta de produccion en funcionamiento.",
+    proceso: "Se trabajo por sectores para no interrumpir la operacion de la planta.",
+    destacado: true,
+  },
+  {
+    slug: "nave-logistica-warnes",
+    titulo: "Nave logistica",
+    servicioSlug: "alisado-de-pisos-en-fresco",
+    ubicacion: "Warnes",
+    areaM2: 2500,
+    descripcion: "Alisado de piso en fresco para una nueva nave logistica de distribucion.",
+    proceso: "Vaciado y alisado en etapas segun el avance de la obra civil.",
+    destacado: true,
+  },
+  {
+    slug: "showroom-comercial",
+    titulo: "Showroom comercial",
+    servicioSlug: "pulido-de-pisos-endurecidos",
+    ubicacion: "Santa Cruz de la Sierra",
+    areaM2: 400,
+    descripcion: "Pulido de alto brillo para un showroom de exhibicion de vehiculos.",
+    destacado: true,
+  },
+  {
+    slug: "planta-de-alimentos",
+    titulo: "Planta de alimentos",
+    servicioSlug: "pintura-epoxica",
+    ubicacion: "Cochabamba",
+    areaM2: 800,
+    descripcion: "Sistema epoxico sanitario para area de procesamiento de alimentos.",
+  },
+  {
+    slug: "camara-frigorifica",
+    titulo: "Camara frigorifica",
+    servicioSlug: "uretano",
+    ubicacion: "Santa Cruz de la Sierra",
+    areaM2: 300,
+    descripcion: "Recubrimiento de uretano para camara frigorifica de alto impacto termico.",
+  },
+  {
+    slug: "acceso-comercial-estampado",
+    titulo: "Acceso comercial estampado",
+    servicioSlug: "estampado-de-hormigon-en-fresco",
+    ubicacion: "Santa Cruz de la Sierra",
+    areaM2: 250,
+    descripcion: "Hormigon estampado decorativo para el acceso principal de un centro comercial.",
+  },
+];
