@@ -1,5 +1,6 @@
-﻿"use client";
+"use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 
 type CompareSliderProps = {
@@ -45,7 +46,7 @@ export default function CompareSlider({ label, color = "#55707c", beforePhoto, a
       >
         <div style={layerStyle}>
           {afterPhoto ? (
-            <img src={afterPhoto} alt="Despues" className="absolute inset-0 h-full w-full" style={{ objectFit: afterFit }} loading="lazy" />
+            <Image src={afterPhoto} alt="Despues" fill sizes="(max-width: 768px) 100vw, 800px" style={{ objectFit: afterFit }} />
           ) : (
             <div className="absolute inset-0" style={{ background: gradient }} />
           )}
@@ -55,7 +56,7 @@ export default function CompareSlider({ label, color = "#55707c", beforePhoto, a
         </div>
         <div style={{ ...layerStyle, clipPath: "inset(0 " + (100 - pos) + "% 0 0)" }}>
           {beforePhoto ? (
-            <img src={beforePhoto} alt="Antes" className="absolute inset-0 h-full w-full" style={{ objectFit: beforeFit, filter: "grayscale(0.35) brightness(0.85)" }} loading="lazy" />
+            <Image src={beforePhoto} alt="Antes" fill sizes="(max-width: 768px) 100vw, 800px" style={{ objectFit: beforeFit, filter: "grayscale(0.35) brightness(0.85)" }} />
           ) : (
             <div className="absolute inset-0" style={{ background: gradient, filter: "grayscale(0.55) brightness(0.7)" }} />
           )}

@@ -8,7 +8,7 @@ function WhatsAppIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-const WHATSAPP_NUMERO = "59176387609";
+const WHATSAPP_NUMERO = "59172629132";
 
 export default function WhatsAppFloat() {
   return (

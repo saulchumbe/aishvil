@@ -1,5 +1,6 @@
-﻿"use client";
+"use client";
 
+import Image from "next/image";
 import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -37,7 +38,14 @@ export default function Galeria({ fotos }: GaleriaProps) {
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        <img src={fotos[indice]} alt={"Foto " + (indice + 1)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+        <Image
+          src={fotos[indice]}
+          alt={"Foto " + (indice + 1)}
+          fill
+          sizes="(max-width: 768px) 100vw, 800px"
+          className="object-cover"
+          priority={indice === 0}
+        />
         <button
           type="button"
           onClick={anterior}
@@ -67,7 +75,7 @@ export default function Galeria({ fotos }: GaleriaProps) {
             style={{ position: "relative", zIndex: 20, cursor: "pointer" }}
             className={"h-14 w-20 shrink-0 overflow-hidden rounded-sm border-2 " + (i === indice ? "border-rex-red" : "border-transparent")}
           >
-            <img src={f} alt="" className="h-full w-full object-cover" />
+            <Image src={f} alt="" fill sizes="80px" className="object-cover" />
           </button>
         ))}
       </div>

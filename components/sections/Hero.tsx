@@ -1,7 +1,7 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 
-const WHATSAPP_NUMERO = "59176387609";
+const WHATSAPP_NUMERO = "59172629132";
 const HERO_PHOTO = "https://images.pexels.com/photos/36230779/pexels-photo-36230779.jpeg?auto=compress&cs=tinysrgb&w=1600";
 
 export default function Hero() {

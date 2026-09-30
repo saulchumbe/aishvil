@@ -1,7 +1,7 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 
-const WHATSAPP_NUMERO = "59176387609";
+const WHATSAPP_NUMERO = "59172629132";
 
 export default function CtaFinal() {
   return (

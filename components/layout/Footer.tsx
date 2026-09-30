@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MessageCircle } from "lucide-react";
 
-const WHATSAPP_NUMERO = "59176387609";
+const WHATSAPP_NUMERO = "59172629132";
 const FACEBOOK_1 = "https://www.facebook.com/share/1Ehc8FEGLi/?mibextid=wwXIfr";
 const FACEBOOK_2 = "https://www.facebook.com/share/19XiJvcvTe/?mibextid=wwXIfr";
 const TIKTOK = "https://www.tiktok.com/@trabajosentodabolivia";

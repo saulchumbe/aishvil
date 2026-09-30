@@ -12,7 +12,7 @@ const LINKS = [
   { href: "/#contacto", label: "Contacto" },
 ];
 
-const WHATSAPP_NUMERO = "59176387609";
+const WHATSAPP_NUMERO = "59172629132";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -43,32 +43,45 @@ export default function Navbar() {
       </header>
 
       {open && (
-        <div style={{ position: "fixed", inset: 0, top: 57, zIndex: 40, backgroundColor: "rgba(0,0,0,0.6)" }} onClick={() => setOpen(false)} />
-      )}
-
-      {open && (
         <div
           style={{
             position: "fixed",
             top: 57,
             left: 0,
             right: 0,
+            bottom: 0,
             zIndex: 50,
             backgroundColor: "#131313",
-            borderBottom: "1px solid #2b2a27",
-            boxShadow: "0 10px 25px rgba(0,0,0,0.4)",
           }}
-          className="px-6 py-5"
+          className="flex flex-col px-6 py-8"
         >
-          <div className="flex flex-col">
+          <nav className="flex flex-col">
             {LINKS.map((l) => (
-              <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="border-cement-800 text-offwhite font-display border-b py-3.5 text-base uppercase tracking-wide">{l.label}</Link>
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="border-cement-800 text-offwhite font-display border-b py-5 text-xl uppercase tracking-wide"
+              >
+                {l.label}
+              </Link>
             ))}
-          </div>
-          <div className="mt-5 flex flex-col gap-3">
-            <Link href="/cotizar" onClick={() => setOpen(false)} className="btn-pop bg-amber text-graphite-950 rounded-sm py-3 text-center font-mono text-xs font-bold tracking-widest uppercase">Solicitar cotizacion</Link>
-            <a href={"https://wa.me/" + WHATSAPP_NUMERO} target="_blank" rel="noopener noreferrer" className="text-steel-300 flex items-center justify-center gap-2 py-1 font-mono text-xs tracking-widest uppercase">
-              <MessageCircle size={16} />
+          </nav>
+          <div className="mt-auto flex flex-col gap-3 pt-8">
+            <Link
+              href="/cotizar"
+              onClick={() => setOpen(false)}
+              className="btn-pop bg-amber text-graphite-950 rounded-sm py-4 text-center font-mono text-sm font-bold tracking-widest uppercase"
+            >
+              Solicitar cotizacion
+            </Link>
+            <a
+              href={"https://wa.me/" + WHATSAPP_NUMERO}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-cement-800 text-offwhite flex items-center justify-center gap-2 rounded-sm border py-4 font-mono text-sm tracking-widest uppercase"
+            >
+              <MessageCircle size={18} />
               <span>Escribir por WhatsApp</span>
             </a>
           </div>
