@@ -3,13 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, Wrench, Workflow, GalleryHorizontal, Phone } from "lucide-react";
 
 const LINKS = [
-  { href: "/#servicios", label: "Servicios" },
-  { href: "/#proceso", label: "Proceso" },
-  { href: "/#transformaciones", label: "Transformaciones" },
-  { href: "/#contacto", label: "Contacto" },
+  { href: "/#servicios", label: "Servicios", icon: Wrench },
+  { href: "/#proceso", label: "Proceso", icon: Workflow },
+  { href: "/#transformaciones", label: "Transformaciones", icon: GalleryHorizontal },
+  { href: "/#contacto", label: "Contacto", icon: Phone },
 ];
 
 const WHATSAPP_NUMERO = "59172629132";
@@ -45,34 +45,42 @@ export default function Navbar() {
       <div
         onClick={() => setOpen(false)}
         className={
-          "fixed left-0 right-0 top-[57px] bottom-0 z-40 bg-black/60 transition-opacity duration-300 " +
+          "fixed left-0 right-0 top-[57px] bottom-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-500 " +
           (open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none")
         }
       />
 
       <div
         className={
-          "fixed left-0 right-0 top-[57px] z-50 origin-top overflow-hidden bg-[#131313] border-b border-cement-800 shadow-2xl transition-all duration-300 ease-out px-6 " +
-          (open ? "max-h-[520px] opacity-100 py-5" : "max-h-0 opacity-0 py-0 pointer-events-none")
+          "fixed left-0 right-0 top-[57px] z-50 origin-top overflow-hidden rounded-b-3xl border-b border-amber/20 bg-gradient-to-b from-graphite-950 to-[#0d0d0c] shadow-2xl shadow-black/60 transition-all ease-[cubic-bezier(0.16,1,0.3,1)] duration-500 px-5 " +
+          (open ? "max-h-[600px] opacity-100 py-6" : "max-h-0 opacity-0 py-0 pointer-events-none")
         }
       >
-        <div className="flex flex-col">
-          {LINKS.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="border-cement-800 text-offwhite font-display border-b py-3.5 text-base uppercase tracking-wide"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </div>
-        <div className="mt-5 flex flex-col gap-3">
+        <nav className="flex flex-col">
+          {LINKS.map((l, i) => {
+            const Icon = l.icon;
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                style={{ transitionDelay: open ? (i * 60 + 80) + "ms" : "0ms" }}
+                className={
+                  "group flex items-center gap-3 border-b border-white/5 py-4 font-display text-base uppercase tracking-wide text-offwhite transition-all duration-300 hover:pl-2 hover:text-amber " +
+                  (open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0")
+                }
+              >
+                <Icon size={18} className="text-amber/80 group-hover:text-amber" />
+                {l.label}
+              </Link>
+            );
+          })}
+        </nav>
+        <div className="mt-6 flex flex-col gap-3">
           <Link
             href="/cotizar"
             onClick={() => setOpen(false)}
-            className="btn-pop bg-amber text-graphite-950 rounded-sm py-3 text-center font-mono text-xs font-bold tracking-widest uppercase"
+            className="btn-pop bg-amber text-graphite-950 hover:bg-amber-dark rounded-full py-3.5 text-center font-mono text-xs font-bold tracking-widest uppercase shadow-lg shadow-amber/20 transition-colors"
           >
             Solicitar cotizacion
           </Link>
@@ -80,7 +88,7 @@ export default function Navbar() {
             href={"https://wa.me/" + WHATSAPP_NUMERO}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-steel-300 flex items-center justify-center gap-2 py-1 font-mono text-xs tracking-widest uppercase"
+            className="text-steel-300 flex items-center justify-center gap-2 rounded-full border border-white/10 py-3.5 font-mono text-xs tracking-widest uppercase transition-colors hover:border-amber/40 hover:text-amber"
           >
             <MessageCircle size={16} />
             <span>Escribir por WhatsApp</span>
