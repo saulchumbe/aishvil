@@ -15,6 +15,8 @@ const OFICIOS = [
   "Otro",
 ];
 
+const MAQUINAS = ["Máquina pulidora", "Máquina alisadora (helicóptero)", "Ninguna por ahora"];
+
 const EXPERIENCIA = ["Menos de 1 ano", "1 a 3 anos", "3 a 5 anos", "Mas de 5 anos"];
 
 const OFICIOS_TEXTO: Record<string, string> = {
@@ -41,6 +43,15 @@ const etiqueta = "text-steel-300 mb-2 block font-mono text-xs tracking-widest up
 export default function TrabajoForm() {
   const [oficio, setOficio] = useState(OFICIOS[0]);
   const [experiencia, setExperiencia] = useState(EXPERIENCIA[1]);
+  const [maquinas, setMaquinas] = useState<string[]>([]);
+
+  function alternarMaquina(m: string) {
+    setMaquinas((actual) => {
+      if (m === "Ninguna por ahora") return actual.includes(m) ? [] : [m];
+      const sinNinguna = actual.filter((x) => x !== "Ninguna por ahora");
+      return sinNinguna.includes(m) ? sinNinguna.filter((x) => x !== m) : [...sinNinguna, m];
+    });
+  }
   const [enviado, setEnviado] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -59,6 +70,7 @@ export default function TrabajoForm() {
       "Nombre: " + nombre,
       "Celular: " + celular,
       "Oficio: " + oficioFinal,
+      "Máquinas que maneja: " + (maquinas.length > 0 ? maquinas.join(", ") : "No indicó"),
       "Experiencia: " + EXPERIENCIA_TEXTO[experiencia],
       "Ciudad / zona: " + zona,
       mensaje ? "Mensaje: " + mensaje : "",
@@ -116,6 +128,39 @@ export default function TrabajoForm() {
         {oficio === "Otro" && (
           <input name="otroOficio" required placeholder="Escribe tu oficio" className={campo + " mt-3"} />
         )}
+      </div>
+
+      <div>
+        <span className={etiqueta}>¿Qué máquinas sabes manejar?</span>
+        <div className="flex flex-wrap gap-2">
+          {MAQUINAS.map((m) => {
+            const activo = maquinas.includes(m);
+            return (
+              <button
+                key={m}
+                type="button"
+                onClick={() => alternarMaquina(m)}
+                className={
+                  "flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-all " +
+                  (activo
+                    ? "bg-amber border-amber text-graphite-950 shadow-md"
+                    : "border-cement-800 text-offwhite hover:border-amber")
+                }
+              >
+                <span
+                  className={
+                    "flex h-4 w-4 items-center justify-center rounded-sm border text-[10px] leading-none " +
+                    (activo ? "border-graphite-950" : "border-cement-800")
+                  }
+                >
+                  {activo ? "✓" : ""}
+                </span>
+                {m}
+              </button>
+            );
+          })}
+        </div>
+        <p className="text-steel-300 mt-2 text-xs">Puedes marcar más de una.</p>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
