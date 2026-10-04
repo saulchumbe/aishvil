@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const WHATSAPP_NUMERO = "59176387609";
+const WHATSAPP_NUMERO = "59172629132";
 
 const SERVICIOS = [
   "Pulido de concreto",

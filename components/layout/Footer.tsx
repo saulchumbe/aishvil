@@ -63,8 +63,9 @@ export default function Footer() {
         <div className="text-steel-300 font-mono text-xs tracking-widest uppercase">
           <p className="text-offwhite mb-3">Navegacion</p>
           <Link href="/#servicios" className="hover:text-offwhite mb-2 block">Servicios</Link>
-          <Link href="/#proyectos" className="hover:text-offwhite mb-2 block">Proyectos</Link>
-          <Link href="/cotizar" className="hover:text-offwhite block">Cotizar</Link>
+          <Link href="/#transformaciones" className="hover:text-offwhite mb-2 block">Proyectos</Link>
+          <Link href="/cotizar" className="hover:text-offwhite mb-2 block">Cotizar</Link>
+          <Link href="/trabaja" className="text-amber hover:text-offwhite block">Trabaja con nosotros</Link>
         </div>
       </div>
     </footer>
